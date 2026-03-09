@@ -2,13 +2,13 @@
 
 **Open-source prototyping and validation toolkit for avionics software concerns.**
 
-Four repositories aligned to three core areas: partitioning, virtualization, and deterministic graphical processing. Built for research, architecture experiments, benchmarking, and proof-of-concept work.
+This portfolio is intended for architecture exploration, timing characterization, virtualization overhead measurement, and deterministic rendering experiments in avionics-adjacent software contexts.
 
 ## Repositories
 
 | Repository | Area | What It Does |
 |-----------|------|-------------|
-| [partition-guard](https://github.com/yablokolabs/partition-guard) | Partitioning | Cyclic executive with temporal isolation, budget enforcement, health monitoring, and lock-free IPC |
+| [partition-guard](https://github.com/yablokolabs/partition-guard) | Partitioning | C++23 partitioned runtime prototype — temporal isolation, budget enforcement, health monitoring, restart policies, and lock-free IPC in userspace. Inspired by ARINC 653, not standards-compliant, not spatially isolated at the OS/MMU level |
 | [virt-jitter-lab](https://github.com/yablokolabs/virt-jitter-lab) | Virtualization | Hypervisor detection, timer jitter measurement, preemption analysis, IPC latency benchmarks, VM exit costing |
 | [wcet-probe](https://github.com/yablokolabs/wcet-probe) | Timing Analysis | Low-overhead execution-time instrumentation, trace capture, tail-latency characterization |
 | [detframe](https://github.com/yablokolabs/detframe) | Graphical Processing | Deterministic software rasterizer, PFD widgets, reproducible frame output, bounded render time |
@@ -29,7 +29,7 @@ Four repositories aligned to three core areas: partitioning, virtualization, and
 
 Each repository is self-contained and independently useful. Together, they address a pipeline of concerns that arise when building safety-aware embedded software:
 
-1. **Isolate** — Run mixed-criticality workloads on shared hardware with temporal and spatial separation. Fault containment ensures one partition's failure doesn't cascade.
+1. **Isolate** — Run mixed-criticality workloads on shared hardware with temporal isolation, budget enforcement, and controlled partition boundaries in userspace. Fault containment ensures one partition's failure doesn't cascade.
 
 2. **Characterize** — Before deploying on a virtualized platform, measure the actual overhead: timer jitter, scheduling preemption, IPC latency, and hypervisor exit cost. Know the cost before committing.
 
@@ -123,6 +123,8 @@ The following are deliberately excluded from this portfolio:
 - **Production deployment** — research quality, not flight quality
 
 ## Repository Status
+
+> Measurements shown below are representative results from tested hardware/runtime configurations and should be treated as platform-dependent.
 
 | Repository | Version | Tests | Key Metric |
 |-----------|---------|-------|------------|
