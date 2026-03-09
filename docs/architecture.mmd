@@ -1,0 +1,19 @@
+flowchart LR
+    A["Execution Environment\nLinux x86_64\nBare Metal or Virtualized Guest"] --> B["partition-guard\nPartition Scheduler\nBudget Enforcement\nHealth Monitoring\nLock-free IPC"]
+
+    A --> C["virt-jitter-lab\nHypervisor Detection\nTimer Jitter Probes\nPreemption Gap Detection\nIPC / VM-exit Measurements"]
+
+    B --> D["Workload A\nHigh Criticality"]
+    B --> E["Workload B\nLower Criticality"]
+    B --> F["Workload C\nDisplay / Data"]
+
+    D --> G["wcet-probe\nRDTSC / RDTSCP Instrumentation\nLock-free Trace Buffer\nTail-Latency Analysis"]
+    E --> G
+    F --> G
+
+    F --> H["detframe\nFixed-point Math\nDeterministic Rasterizer\nPFD Widgets\nFrame Budget Checks"]
+
+    C --> I["Virtualization Report\nJitter / IPC / Exit Cost"]
+    G --> J["Timing Report\nObserved Max / Percentiles"]
+    H --> K["Framebuffer Output\nPFD Render / Replay"]
+    B --> L["Fault / Restart Logs"]

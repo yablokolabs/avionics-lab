@@ -13,19 +13,9 @@ This portfolio is intended for architecture exploration, timing characterization
 | [wcet-probe](https://github.com/yablokolabs/wcet-probe) | Timing Analysis | Low-overhead execution-time instrumentation, trace capture, tail-latency characterization |
 | [detframe](https://github.com/yablokolabs/detframe) | Graphical Processing | Deterministic software rasterizer, PFD widgets, reproducible frame output, bounded render time |
 
-## System Story
+## Architecture Overview
 
-```
- ┌─────────────────┐     ┌──────────────────┐     ┌──────────────┐     ┌──────────────┐
- │ partition-guard  │     │ virt-jitter-lab  │     │  wcet-probe  │     │   detframe   │
- │                  │     │                  │     │              │     │              │
- │  Isolate work-   │────▶│  Characterize    │────▶│  Validate    │────▶│  Render      │
- │  loads in time   │     │  virtualization  │     │  execution   │     │  displays    │
- │  and space       │     │  overhead        │     │  timing      │     │  determin-   │
- │                  │     │                  │     │              │     │  istically   │
- └─────────────────┘     └──────────────────┘     └──────────────┘     └──────────────┘
-       ISOLATE                CHARACTERIZE             VALIDATE             RENDER
-```
+![Architecture — Isolation, Timing Characterization, Virtualization Measurement, and Deterministic Rendering](docs/architecture.svg)
 
 Each repository is self-contained and independently useful. Together, they address a pipeline of concerns that arise when building safety-aware embedded software:
 
