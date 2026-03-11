@@ -14,6 +14,9 @@ This portfolio is intended for architecture exploration, timing characterization
 | [wcet-probe](https://github.com/yablokolabs/wcet-probe) | Timing Analysis | Low-overhead execution-time instrumentation, trace capture, tail-latency characterization |
 | [track-core](https://github.com/yablokolabs/track-core) | State Estimation | Kalman filtering, extended Kalman filter, sensor simulation, sequential multi-sensor fusion |
 | [detframe](https://github.com/yablokolabs/detframe) | Graphical Processing | Deterministic software rasterizer, PFD widgets, reproducible frame output, bounded render time |
+| [nav-sim](https://github.com/yablokolabs/nav-sim) | Navigation | Flight phase FSM (10 states), priority-based mode management with automatic reversion, flight profile simulation |
+| [log-replay](https://github.com/yablokolabs/log-replay) | Data Recording | Deterministic flight data recorder — 256-byte fixed records, bounded buffer, file export, bit-exact replay comparison |
+| [health-mon](https://github.com/yablokolabs/health-mon) | Health Monitoring | TMR voting, duplex cross-compare, multi-channel watchdog timers, degraded mode management |
 | [fault-inject](https://github.com/yablokolabs/fault-inject) | Resilience Testing | Fault injection (bit flips, stuck, drift, noise, drops), range/rate monitoring, automated test campaigns |
 
 ## Architecture Overview
@@ -34,7 +37,13 @@ Each repository is self-contained and independently useful. Together, they addre
 
 6. **Render** — Produce avionics-style displays (PFDs) using a software rasterizer with no floating-point in the render path, reproducible output, and bounded frame times.
 
-7. **Stress Test** — Inject faults (bit flips, stuck sensors, drift, noise, message drops) into any stage of the pipeline and measure how the system degrades. Automated campaigns with structured reporting.
+7. **Navigate** — Manage flight phase transitions and mode selection through a deterministic state machine. Automatic mode reversion when the current mode is invalid for the flight phase.
+
+8. **Record** — Log every data point in bounded, append-only binary records. Replay offline for analysis and regression testing. Compare two recordings for bit-exact reproducibility.
+
+9. **Monitor** — Vote on redundant inputs (TMR / duplex), watch for missed heartbeats, and manage graceful degradation when components fail.
+
+10. **Stress Test** — Inject faults (bit flips, stuck sensors, drift, noise, message drops) into any stage of the pipeline and measure how the system degrades. Automated campaigns with structured reporting.
 
 ## What This Is
 
@@ -159,6 +168,9 @@ The following are deliberately excluded from this portfolio:
 | wcet-probe | 0.1.0 | 4/4 ✅ | ~20ns instrumentation overhead |
 | track-core | 0.1.0 | 6/6 ✅ | 0.88m fused tracking error (2 sensors) |
 | detframe | 0.1.0 | 3/3 ✅ | 437μs/frame PFD render |
+| nav-sim | 0.1.0 | 6/6 ✅ | 10-state FSM, auto mode reversion |
+| log-replay | 0.1.0 | 6/6 ✅ | 256B records, bit-exact comparison |
+| health-mon | 0.1.0 | 6/6 ✅ | TMR voter, multi-channel watchdog |
 | fault-inject | 0.1.0 | 6/6 ✅ | 6 fault types, automated campaigns |
 
 ## License
