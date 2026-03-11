@@ -11,11 +11,12 @@ This portfolio is intended for architecture exploration, timing characterization
 | [partition-guard](https://github.com/yablokolabs/partition-guard) | Partitioning | C++23 partitioned runtime prototype — temporal isolation, budget enforcement, health monitoring, restart policies, and lock-free IPC in userspace. Inspired by ARINC 653, not standards-compliant, not spatially isolated at the OS/MMU level |
 | [virt-jitter-lab](https://github.com/yablokolabs/virt-jitter-lab) | Virtualization | Hypervisor detection, timer jitter measurement, preemption analysis, IPC latency benchmarks, VM exit costing |
 | [wcet-probe](https://github.com/yablokolabs/wcet-probe) | Timing Analysis | Low-overhead execution-time instrumentation, trace capture, tail-latency characterization |
+| [track-core](https://github.com/yablokolabs/track-core) | State Estimation | Kalman filtering, extended Kalman filter, sensor simulation, sequential multi-sensor fusion |
 | [detframe](https://github.com/yablokolabs/detframe) | Graphical Processing | Deterministic software rasterizer, PFD widgets, reproducible frame output, bounded render time |
 
 ## Architecture Overview
 
-![Architecture — Isolation, Timing Characterization, Virtualization Measurement, and Deterministic Rendering](docs/architecture.svg)
+![Architecture — Isolation, Timing Characterization, Virtualization Measurement, State Estimation, and Deterministic Rendering](docs/architecture.svg)
 
 Each repository is self-contained and independently useful. Together, they address a pipeline of concerns that arise when building safety-aware embedded software:
 
@@ -25,7 +26,9 @@ Each repository is self-contained and independently useful. Together, they addre
 
 3. **Validate** — Instrument critical code paths and characterize their execution-time distribution under stress. Identify tail latencies and outliers that might violate timing budgets.
 
-4. **Render** — Produce avionics-style displays (PFDs) using a software rasterizer with no floating-point in the render path, reproducible output, and bounded frame times.
+4. **Track** — Estimate target state from noisy sensor measurements using Kalman filtering and multi-sensor fusion. The mathematical foundation for any system that needs to know where something is and where it's going.
+
+5. **Render** — Produce avionics-style displays (PFDs) using a software rasterizer with no floating-point in the render path, reproducible output, and bounded frame times.
 
 ## What This Is
 
@@ -89,7 +92,16 @@ cd wcet-probe
 # Analyze tail latencies: does p99.99 fit within the 16.67ms budget?
 ```
 
-**Step 4: Verify deterministic output**
+**Step 4: Estimate tracked target state**
+```bash
+cd track-core
+./build/multi_sensor_tracking
+# → Two sensors fuse noisy measurements via sequential Kalman filter
+# → Fusion reduces tracking error by ~43% vs single sensor
+# → Feed estimated trajectory into the PFD display
+```
+
+**Step 5: Verify deterministic output**
 ```bash
 cd detframe
 ./build/detframe --frames 100 --capture
@@ -99,7 +111,7 @@ python3 tools/frame_diff.py frame_00042.ppm frame_00042_rerun.ppm
 # → "✓ Frames are identical (307,200 pixels)"
 ```
 
-**Result:** You now have empirical data on virtualization cost, partition isolation behavior, render timing distribution, and output reproducibility — before writing a single line of production code.
+**Result:** You now have empirical data on virtualization cost, partition isolation behavior, render timing distribution, tracking accuracy, and output reproducibility — before writing a single line of production code.
 
 ## Intentionally Out of Scope
 
@@ -121,6 +133,7 @@ The following are deliberately excluded from this portfolio:
 | partition-guard | 0.1.0 | 4/4 ✅ | ~1ns IPC, 156μs worst jitter |
 | virt-jitter-lab | 0.1.0 | 4/4 ✅ | 477ns CPUID VM exit (Hyper-V) |
 | wcet-probe | 0.1.0 | 4/4 ✅ | ~20ns instrumentation overhead |
+| track-core | 0.1.0 | 6/6 ✅ | 0.88m fused tracking error (2 sensors) |
 | detframe | 0.1.0 | 3/3 ✅ | 437μs/frame PFD render |
 
 ## License
