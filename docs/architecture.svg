@@ -1,137 +1,144 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 580" font-family="system-ui, -apple-system, sans-serif" font-size="12">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+    <marker id="arrow-al" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#64748b"/>
     </marker>
-    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
-      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.1"/>
-    </filter>
   </defs>
 
-  <!-- Title -->
-  <text x="600" y="30" text-anchor="middle" font-size="16" font-weight="600" fill="#333">Architecture Overview — Isolation, Timing Characterization, Virtualization Measurement, and Deterministic Rendering</text>
+  <rect width="1100" height="580" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="550" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">avionics-lab — Complete Avionics Research Stack</text>
+  <text x="550" y="50" text-anchor="middle" font-size="12" fill="#64748b">10 repositories · 53 tests · C++23 · Apache-2.0</text>
 
-  <!-- Execution Environment (background) -->
-  <rect x="20" y="50" width="1160" height="590" rx="8" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5"/>
-  <text x="40" y="75" font-size="13" font-weight="600" fill="#495057">Execution Environment</text>
-  <text x="40" y="93" font-size="11" fill="#868e96">Linux x86_64 · Bare Metal or Virtualized Guest</text>
-
-  <!-- virt-jitter-lab (cross-cutting, top) -->
-  <rect x="40" y="110" width="1120" height="90" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="60" y="135" font-size="14" font-weight="600" fill="#e65100">virt-jitter-lab</text>
-  <text x="60" y="155" font-size="11" fill="#555">Hypervisor Detection</text>
-  <text x="260" y="155" font-size="11" fill="#555">Timer Jitter Probes</text>
-  <text x="450" y="155" font-size="11" fill="#555">Preemption Gap Detection</text>
-  <text x="700" y="155" font-size="11" fill="#555">IPC Latency Benchmarks</text>
-  <text x="930" y="155" font-size="11" fill="#555">VM-exit Cost Profiling</text>
-  <text x="60" y="185" font-size="10" fill="#888" font-style="italic">Cross-cutting measurement layer — characterizes virtualization overhead across all workloads</text>
+  <!-- Row 1: Core Infrastructure -->
+  <text x="30" y="85" font-weight="bold" fill="#475569" font-size="11">INFRASTRUCTURE</text>
 
   <!-- partition-guard -->
-  <rect x="40" y="220" width="340" height="200" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="60" y="248" font-size="14" font-weight="600" fill="#0d47a1">partition-guard</text>
-  <rect x="55" y="260" width="140" height="28" rx="4" fill="#bbdefb" stroke="#90caf9"/>
-  <text x="125" y="279" text-anchor="middle" font-size="10" fill="#333">Partition Scheduler</text>
-  <rect x="205" y="260" width="155" height="28" rx="4" fill="#bbdefb" stroke="#90caf9"/>
-  <text x="282" y="279" text-anchor="middle" font-size="10" fill="#333">Budget Enforcement</text>
-  <rect x="55" y="296" width="140" height="28" rx="4" fill="#bbdefb" stroke="#90caf9"/>
-  <text x="125" y="315" text-anchor="middle" font-size="10" fill="#333">Health Monitor</text>
-  <rect x="205" y="296" width="155" height="28" rx="4" fill="#bbdefb" stroke="#90caf9"/>
-  <text x="282" y="315" text-anchor="middle" font-size="10" fill="#333">Restart Policies</text>
-  <rect x="55" y="332" width="305" height="28" rx="4" fill="#bbdefb" stroke="#90caf9"/>
-  <text x="207" y="351" text-anchor="middle" font-size="10" fill="#333">Lock-free IPC (Sampling Ports · Queuing Ports)</text>
+  <rect x="30" y="95" width="150" height="75" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="105" y="115" text-anchor="middle" font-weight="bold" fill="#1e40af" font-size="11">partition-guard</text>
+  <text x="105" y="132" text-anchor="middle" fill="#1e40af" font-size="9">Temporal isolation</text>
+  <text x="105" y="146" text-anchor="middle" fill="#1e40af" font-size="9">Budget enforcement</text>
+  <text x="105" y="160" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="bold">ISOLATE</text>
 
-  <!-- Workloads -->
-  <rect x="70" y="375" width="85" height="30" rx="4" fill="#e8eaf6" stroke="#7986cb"/>
-  <text x="112" y="395" text-anchor="middle" font-size="9" fill="#333">Workload A</text>
-  <rect x="165" y="375" width="85" height="30" rx="4" fill="#e8eaf6" stroke="#7986cb"/>
-  <text x="207" y="395" text-anchor="middle" font-size="9" fill="#333">Workload B</text>
-  <rect x="260" y="375" width="85" height="30" rx="4" fill="#e8eaf6" stroke="#7986cb"/>
-  <text x="302" y="395" text-anchor="middle" font-size="9" fill="#333">Workload C</text>
+  <!-- comm-bus -->
+  <rect x="200" y="95" width="150" height="75" rx="6" fill="#d1fae5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="275" y="115" text-anchor="middle" font-weight="bold" fill="#065f46" font-size="11">comm-bus</text>
+  <text x="275" y="132" text-anchor="middle" fill="#065f46" font-size="9">Lock-free pub/sub</text>
+  <text x="275" y="146" text-anchor="middle" fill="#065f46" font-size="9">Time-triggered scheduling</text>
+  <text x="275" y="160" text-anchor="middle" fill="#10b981" font-size="9" font-weight="bold">CONNECT</text>
+
+  <!-- health-mon -->
+  <rect x="370" y="95" width="150" height="75" rx="6" fill="#ede9fe" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="445" y="115" text-anchor="middle" font-weight="bold" fill="#5b21b6" font-size="11">health-mon</text>
+  <text x="445" y="132" text-anchor="middle" fill="#5b21b6" font-size="9">TMR voting · Watchdog</text>
+  <text x="445" y="146" text-anchor="middle" fill="#5b21b6" font-size="9">Degraded mode mgmt</text>
+  <text x="445" y="160" text-anchor="middle" fill="#8b5cf6" font-size="9" font-weight="bold">MONITOR</text>
+
+  <!-- Row 2: Measurement & Characterization -->
+  <text x="30" y="200" font-weight="bold" fill="#475569" font-size="11">MEASUREMENT</text>
+
+  <!-- virt-jitter-lab -->
+  <rect x="30" y="210" width="150" height="75" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="105" y="230" text-anchor="middle" font-weight="bold" fill="#92400e" font-size="11">virt-jitter-lab</text>
+  <text x="105" y="247" text-anchor="middle" fill="#92400e" font-size="9">Hypervisor detection</text>
+  <text x="105" y="261" text-anchor="middle" fill="#92400e" font-size="9">Timer jitter · VM exit</text>
+  <text x="105" y="275" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="bold">CHARACTERIZE</text>
 
   <!-- wcet-probe -->
-  <rect x="420" y="220" width="340" height="200" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="440" y="248" font-size="14" font-weight="600" fill="#1b5e20">wcet-probe</text>
-  <rect x="435" y="260" width="155" height="28" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="512" y="279" text-anchor="middle" font-size="10" fill="#333">RDTSC/RDTSCP Probes</text>
-  <rect x="600" y="260" width="145" height="28" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="672" y="279" text-anchor="middle" font-size="10" fill="#333">CPU Control</text>
-  <rect x="435" y="296" width="310" height="28" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="590" y="315" text-anchor="middle" font-size="10" fill="#333">Lock-free Ring Buffer (1M samples)</text>
-  <rect x="435" y="332" width="155" height="28" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="512" y="351" text-anchor="middle" font-size="10" fill="#333">Binary Trace Files</text>
-  <rect x="600" y="332" width="145" height="28" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="672" y="351" text-anchor="middle" font-size="10" fill="#333">Python Analyzer</text>
-  <rect x="435" y="375" width="310" height="30" rx="4" fill="#c8e6c9" stroke="#a5d6a7"/>
-  <text x="590" y="395" text-anchor="middle" font-size="10" fill="#333">Tail-Latency Analysis (p90 → p99.99)</text>
+  <rect x="200" y="210" width="150" height="75" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="275" y="230" text-anchor="middle" font-weight="bold" fill="#92400e" font-size="11">wcet-probe</text>
+  <text x="275" y="247" text-anchor="middle" fill="#92400e" font-size="9">Execution timing</text>
+  <text x="275" y="261" text-anchor="middle" fill="#92400e" font-size="9">Tail-latency analysis</text>
+  <text x="275" y="275" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="bold">VALIDATE</text>
+
+  <!-- fault-inject -->
+  <rect x="370" y="210" width="150" height="75" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="445" y="230" text-anchor="middle" font-weight="bold" fill="#b91c1c" font-size="11">fault-inject</text>
+  <text x="445" y="247" text-anchor="middle" fill="#b91c1c" font-size="9">Bit flip · Drift · Stuck</text>
+  <text x="445" y="261" text-anchor="middle" fill="#b91c1c" font-size="9">Automated campaigns</text>
+  <text x="445" y="275" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="bold">STRESS TEST</text>
+
+  <!-- Row 3: Application -->
+  <text x="30" y="320" font-weight="bold" fill="#475569" font-size="11">APPLICATION</text>
+
+  <!-- track-core -->
+  <rect x="30" y="330" width="150" height="75" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="105" y="350" text-anchor="middle" font-weight="bold" fill="#3730a3" font-size="11">track-core</text>
+  <text x="105" y="367" text-anchor="middle" fill="#3730a3" font-size="9">Kalman filter · EKF</text>
+  <text x="105" y="381" text-anchor="middle" fill="#3730a3" font-size="9">Multi-sensor fusion</text>
+  <text x="105" y="395" text-anchor="middle" fill="#6366f1" font-size="9" font-weight="bold">TRACK</text>
+
+  <!-- nav-sim -->
+  <rect x="200" y="330" width="150" height="75" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="275" y="350" text-anchor="middle" font-weight="bold" fill="#3730a3" font-size="11">nav-sim</text>
+  <text x="275" y="367" text-anchor="middle" fill="#3730a3" font-size="9">Flight phase FSM</text>
+  <text x="275" y="381" text-anchor="middle" fill="#3730a3" font-size="9">Mode management</text>
+  <text x="275" y="395" text-anchor="middle" fill="#6366f1" font-size="9" font-weight="bold">NAVIGATE</text>
 
   <!-- detframe -->
-  <rect x="800" y="220" width="340" height="200" rx="6" fill="#fce4ec" stroke="#c62828" stroke-width="1.5" filter="url(#shadow)"/>
-  <text x="820" y="248" font-size="14" font-weight="600" fill="#b71c1c">detframe</text>
-  <rect x="815" y="260" width="155" height="28" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="892" y="279" text-anchor="middle" font-size="10" fill="#333">Fixed-point Math</text>
-  <rect x="980" y="260" width="145" height="28" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="1052" y="279" text-anchor="middle" font-size="10" fill="#333">Q16.16 Trig LUT</text>
-  <rect x="815" y="296" width="310" height="28" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="970" y="315" text-anchor="middle" font-size="10" fill="#333">Deterministic Rasterizer (Bresenham · Midpoint · Scanline)</text>
-  <rect x="815" y="332" width="310" height="28" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="970" y="351" text-anchor="middle" font-size="10" fill="#333">PFD Widgets (Attitude · Tapes · Compass · Text)</text>
-  <rect x="815" y="375" width="155" height="30" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="892" y="395" text-anchor="middle" font-size="10" fill="#333">Frame Timer</text>
-  <rect x="980" y="375" width="145" height="30" rx="4" fill="#ffcdd2" stroke="#ef9a9a"/>
-  <text x="1052" y="395" text-anchor="middle" font-size="10" fill="#333">PPM Capture</text>
+  <rect x="370" y="330" width="150" height="75" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="445" y="350" text-anchor="middle" font-weight="bold" fill="#3730a3" font-size="11">detframe</text>
+  <text x="445" y="367" text-anchor="middle" fill="#3730a3" font-size="9">Software rasterizer</text>
+  <text x="445" y="381" text-anchor="middle" fill="#3730a3" font-size="9">PFD widgets</text>
+  <text x="445" y="395" text-anchor="middle" fill="#6366f1" font-size="9" font-weight="bold">RENDER</text>
 
-  <!-- Arrows: partition-guard → wcet-probe -->
-  <line x1="380" y1="320" x2="420" y2="320" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- log-replay -->
+  <rect x="370" y="430" width="150" height="60" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="445" y="452" text-anchor="middle" font-weight="bold" fill="#475569" font-size="11">log-replay</text>
+  <text x="445" y="468" text-anchor="middle" fill="#475569" font-size="9">Binary recorder · Bit-exact replay</text>
+  <text x="445" y="482" text-anchor="middle" fill="#64748b" font-size="9" font-weight="bold">RECORD</text>
 
-  <!-- Arrows: wcet-probe → detframe -->
-  <line x1="760" y1="320" x2="800" y2="320" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Pipeline diagram on right side -->
+  <rect x="580" y="80" width="490" height="395" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="825" y="105" text-anchor="middle" font-weight="bold" fill="#1e293b" font-size="13">Execution Pipeline</text>
 
-  <!-- Arrows: workloads → wcet-probe -->
-  <path d="M 345 390 Q 390 390 420 370" stroke="#666" stroke-width="1" fill="none" marker-end="url(#arrow)" stroke-dasharray="4"/>
+  <!-- Pipeline steps -->
+  <rect x="620" y="125" width="130" height="35" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="685" y="147" text-anchor="middle" fill="#1e40af" font-size="11" font-weight="bold">1. ISOLATE</text>
+  <line x1="685" y1="160" x2="685" y2="170" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Outputs row -->
-  <rect x="40" y="440" width="1120" height="10" rx="0" fill="none"/>
+  <rect x="620" y="175" width="130" height="35" rx="4" fill="#d1fae5" stroke="#10b981"/>
+  <text x="685" y="197" text-anchor="middle" fill="#065f46" font-size="11" font-weight="bold">2. CONNECT</text>
+  <line x1="685" y1="210" x2="685" y2="220" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Output: Fault Logs -->
-  <rect x="40" y="460" width="220" height="65" rx="6" fill="#fff" stroke="#1565c0" stroke-width="1" stroke-dasharray="4"/>
-  <text x="150" y="483" text-anchor="middle" font-size="11" font-weight="600" fill="#1565c0">Fault / Restart Logs</text>
-  <text x="150" y="500" text-anchor="middle" font-size="9" fill="#888">Partition health events</text>
-  <text x="150" y="514" text-anchor="middle" font-size="9" fill="#888">Budget overrun records</text>
+  <rect x="620" y="225" width="130" height="35" rx="4" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="685" y="247" text-anchor="middle" fill="#92400e" font-size="11" font-weight="bold">3. CHARACTERIZE</text>
+  <line x1="685" y1="260" x2="685" y2="270" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Output: Virt Report -->
-  <rect x="280" y="460" width="220" height="65" rx="6" fill="#fff" stroke="#f57c00" stroke-width="1" stroke-dasharray="4"/>
-  <text x="390" y="483" text-anchor="middle" font-size="11" font-weight="600" fill="#e65100">Virtualization Report</text>
-  <text x="390" y="500" text-anchor="middle" font-size="9" fill="#888">Jitter / IPC / VM-exit cost</text>
-  <text x="390" y="514" text-anchor="middle" font-size="9" fill="#888">Hypervisor characterization</text>
+  <rect x="620" y="275" width="130" height="35" rx="4" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="685" y="297" text-anchor="middle" fill="#92400e" font-size="11" font-weight="bold">4. VALIDATE</text>
+  <line x1="685" y1="310" x2="685" y2="320" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Output: Timing Report -->
-  <rect x="520" y="460" width="220" height="65" rx="6" fill="#fff" stroke="#2e7d32" stroke-width="1" stroke-dasharray="4"/>
-  <text x="630" y="483" text-anchor="middle" font-size="11" font-weight="600" fill="#1b5e20">Timing Report</text>
-  <text x="630" y="500" text-anchor="middle" font-size="9" fill="#888">Observed max / percentiles</text>
-  <text x="630" y="514" text-anchor="middle" font-size="9" fill="#888">Histograms / trace files</text>
+  <rect x="620" y="325" width="130" height="35" rx="4" fill="#e0e7ff" stroke="#6366f1"/>
+  <text x="685" y="347" text-anchor="middle" fill="#3730a3" font-size="11" font-weight="bold">5. TRACK</text>
+  <line x1="685" y1="360" x2="685" y2="370" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Output: Framebuffer -->
-  <rect x="760" y="460" width="220" height="65" rx="6" fill="#fff" stroke="#c62828" stroke-width="1" stroke-dasharray="4"/>
-  <text x="870" y="483" text-anchor="middle" font-size="11" font-weight="600" fill="#b71c1c">Framebuffer Output</text>
-  <text x="870" y="500" text-anchor="middle" font-size="9" fill="#888">PFD render frames</text>
-  <text x="870" y="514" text-anchor="middle" font-size="9" fill="#888">Reproducible / diffable</text>
+  <rect x="620" y="375" width="130" height="35" rx="4" fill="#e0e7ff" stroke="#6366f1"/>
+  <text x="685" y="397" text-anchor="middle" fill="#3730a3" font-size="11" font-weight="bold">6. NAVIGATE</text>
+  <line x1="685" y1="410" x2="685" y2="420" stroke="#64748b" stroke-width="1" marker-end="url(#arrow-al)"/>
 
-  <!-- Arrows to outputs -->
-  <line x1="210" y1="420" x2="150" y2="460" stroke="#1565c0" stroke-width="1" stroke-dasharray="3" marker-end="url(#arrow)"/>
-  <line x1="590" y1="145" x2="390" y2="460" stroke="#f57c00" stroke-width="1" stroke-dasharray="3" marker-end="url(#arrow)"/>
-  <line x1="590" y1="420" x2="630" y2="460" stroke="#2e7d32" stroke-width="1" stroke-dasharray="3" marker-end="url(#arrow)"/>
-  <line x1="970" y1="420" x2="870" y2="460" stroke="#c62828" stroke-width="1" stroke-dasharray="3" marker-end="url(#arrow)"/>
+  <rect x="620" y="425" width="130" height="35" rx="4" fill="#e0e7ff" stroke="#6366f1"/>
+  <text x="685" y="447" text-anchor="middle" fill="#3730a3" font-size="11" font-weight="bold">7. RENDER</text>
 
-  <!-- Pipeline labels -->
-  <text x="210" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#1565c0">ISOLATE</text>
-  <text x="400" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#e65100">CHARACTERIZE</text>
-  <text x="590" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#1b5e20">VALIDATE</text>
-  <text x="970" y="440" text-anchor="middle" font-size="12" font-weight="700" fill="#b71c1c">RENDER</text>
+  <!-- Cross-cutting concerns on right -->
+  <rect x="790" y="125" width="260" height="100" rx="6" fill="#ede9fe" stroke="#8b5cf6" stroke-dasharray="4,3"/>
+  <text x="920" y="148" text-anchor="middle" font-weight="bold" fill="#5b21b6" font-size="11">Cross-Cutting</text>
+  <text x="920" y="170" text-anchor="middle" fill="#5b21b6" font-size="10">health-mon → all stages</text>
+  <text x="920" y="188" text-anchor="middle" fill="#5b21b6" font-size="10">log-replay → all stages</text>
+  <text x="920" y="206" text-anchor="middle" fill="#5b21b6" font-size="10">fault-inject → any stage</text>
+
+  <!-- Technical baseline -->
+  <rect x="790" y="250" width="260" height="120" rx="6" fill="white" stroke="#cbd5e1"/>
+  <text x="920" y="275" text-anchor="middle" font-weight="bold" fill="#475569" font-size="11">Technical Baseline</text>
+  <text x="920" y="296" text-anchor="middle" fill="#64748b" font-size="10">C++23 · CMake ≥ 3.25</text>
+  <text x="920" y="314" text-anchor="middle" fill="#64748b" font-size="10">-Wall -Wextra -Wpedantic -Werror</text>
+  <text x="920" y="332" text-anchor="middle" fill="#64748b" font-size="10">CLOCK_MONOTONIC · Lock-free</text>
+  <text x="920" y="350" text-anchor="middle" fill="#64748b" font-size="10">No hot-path allocation</text>
+
+  <!-- Test summary -->
+  <rect x="790" y="395" width="260" height="65" rx="6" fill="#d1fae5" stroke="#10b981"/>
+  <text x="920" y="418" text-anchor="middle" font-weight="bold" fill="#065f46" font-size="11">All Tests Passing</text>
+  <text x="920" y="438" text-anchor="middle" fill="#065f46" font-size="10">53 / 53 across 10 repositories</text>
 
   <!-- Footer -->
-  <text x="600" y="560" text-anchor="middle" font-size="10" fill="#adb5bd" font-style="italic">Representative architecture for research prototypes and timing/rendering experiments; not a certified avionics platform.</text>
-  <text x="600" y="578" text-anchor="middle" font-size="10" fill="#adb5bd">All repositories: C++23 · CMake ≥ 3.25 · GCC ≥ 13 / Clang ≥ 17 · CLOCK_MONOTONIC · Lock-free data paths · Apache-2.0</text>
-
-  <!-- Yabloko Labs -->
-  <text x="600" y="620" text-anchor="middle" font-size="11" fill="#868e96">Yabloko Labs — github.com/yablokolabs</text>
+  <text x="550" y="555" text-anchor="middle" fill="#94a3b8" font-size="10">Research prototypes — not certified to any standard. Yabloko Labs · Apache-2.0.</text>
 </svg>
